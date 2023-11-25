@@ -4,7 +4,7 @@
 1. **進入容器**：首先，使用以下命令進入正在運行的 Docker 容器。假設你的容器名稱是 "my-container"：
 
     ```bash
-    docker exec -it my-container /bin/bash
+    docker exec -it my-container /bin/sh
     ```
 
     這會打開一個 shell 會話，你可以在其中進行程式碼變更。
