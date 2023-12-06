@@ -66,7 +66,7 @@ docker ps -a
 4. **進入容器（如果需要）**：如果你需要在容器內執行命令或調試，可以使用 `docker exec` 進入容器。
 
     ```bash
-    docker exec -it container_name /bin/bash
+    docker exec -it container_name  /bin/sh
     ```
 
    這將使你進入容器的 shell 環境，以便進行進一步的操作。
