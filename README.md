@@ -29,6 +29,25 @@
 
 這樣，你的容器將會重新啟動，應用程式程式碼將會更新，但資料庫不會被刪除，除非你明確執行資料庫相關的操作。請確保在進行這些步驟之前備份任何重要的數據，以防萬一。
 
+##容器中没有安装 sudo。在 Docker 容器中，通常不需要使用 sudo 来安装软件包。
+你可以直接使用 apk（适用于 Alpine Linux）或者 apt-get（适用于 Debian/Ubuntu Linux）来安装软件包。
+
+假设你的容器使用的是 Alpine Linux，你可以运行以下命令来安装 Git：
+
+```
+$ apk update
+$ apk add git
+
+```
+
+如果你的容器使用的是 Debian/Ubuntu Linux，可以运行以下命令来安装 Git：
+
+```
+$ apt-get update
+$ apt-get install git
+
+
+```
 
 
 ## 要查看正在運行的 Docker 容器的名稱，你可以使用以下命令：
