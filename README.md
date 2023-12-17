@@ -93,3 +93,39 @@ docker ps -a
 請確保你在更新代碼後重新構建容器（如果適用），以確保容器中運行的應用程序使用了最新的代碼。這是一個基本的流程，實際步驟可能會因你的應用程序和工作流程而異。
 
 請注意，如果你的應用程序需要特殊的配置或數據庫遷移，你可能需要執行其他步驟來確保應用程序正確運行。
+
+
+
+
+
+##要使用 Docker Volume 來保存正在運行的 Docker 容器中的數據，您可以按照以下步驟操作：
+
+創建 Docker Volume：
+在您的命令行界面上運行以下命令，以創建一個 Docker Volume。這將用於保存容器中的數據。
+
+```
+docker volume create mydata
+```
+運行 MySQL 容器：
+如果您的 MySQL 容器尚未運行，請確保使用以下類似的命令運行它，並將 Docker Volume 掛載到容器中。
+
+```
+docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=yourpassword -v mydata:/var/lib/mysql mysql:latest
+```
+這裡，mydata 是您在第 1 步中創建的 Docker Volume 的名稱。
+
+運行 Web 服務容器：
+運行您的 Web 服務容器，並將 Docker Volume 掛載到 Web 服務容器的 /app/public 目錄，假設 /app/public 是您希望保存的目錄。
+
+```
+docker run -d --name web-container -v mydata:/app/public your-web-image:latest
+```
+這裡，your-web-image 是您的 Web 服務容器映像的名稱。
+
+現在，您的 MySQL 數據庫和 Web 服務容器的 /app/public 目錄都被保存在名為 mydata 的 Docker Volume 中。即使您停止和刪除容器，數據也會保持不變，並且在以後的運行中可以輕鬆訪問。
+
+請確保替換示例中的容器名稱、密碼、映像名稱和目錄路徑，以符合您的實際需求。
+
+
+
+
