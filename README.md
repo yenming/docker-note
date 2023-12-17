@@ -98,7 +98,7 @@ docker ps -a
 
 
 
-##要使用 Docker Volume 來保存正在運行的 Docker 容器中的數據，您可以按照以下步驟操作：
+## 要使用 Docker Volume 來保存正在運行的 Docker 容器中的數據，您可以按照以下步驟操作：
 
 創建 Docker Volume：
 在您的命令行界面上運行以下命令，以創建一個 Docker Volume。這將用於保存容器中的數據。
@@ -106,7 +106,9 @@ docker ps -a
 ```
 docker volume create mydata
 ```
-運行 MySQL 容器：
+這裡，mydata 是 Docker Volume 的名稱。
+
+1.運行 MySQL 容器：
 如果您的 MySQL 容器尚未運行，請確保使用以下類似的命令運行它，並將 Docker Volume 掛載到容器中。
 
 ```
@@ -114,7 +116,7 @@ docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=yourpassword -v myda
 ```
 這裡，mydata 是您在第 1 步中創建的 Docker Volume 的名稱。
 
-運行 Web 服務容器：
+2.運行 Web 服務容器：
 運行您的 Web 服務容器，並將 Docker Volume 掛載到 Web 服務容器的 /app/public 目錄，假設 /app/public 是您希望保存的目錄。
 
 ```
